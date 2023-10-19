@@ -18,7 +18,7 @@ help: _header
 
 _header:
 	@echo ------
-	@echo MKDocs
+	@echo MkDocs
 	@echo ------
 
 init:
