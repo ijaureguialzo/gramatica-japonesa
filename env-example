@@ -1,0 +1,5 @@
+# Puerto de escucha
+PUERTO=8000
+
+# Temas disponibles: alabaster, cinder, ivory, kpn, material, mkdocs, readthedocs, rtd-dropdown
+TEMA=mkdocs
