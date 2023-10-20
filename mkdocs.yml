@@ -1,1 +1,10 @@
-site_name: My Docs
+site_name: 日本語の文法
+
+plugins:
+  - furigana:
+      multiple: "§"
+      inicio: "【"
+      fin: "】"
+
+extra_css:
+  - furigana.css
