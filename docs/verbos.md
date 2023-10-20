@@ -1,0 +1,5 @@
+# Verbos
+
+## Forma て
+
+Próximamente.
