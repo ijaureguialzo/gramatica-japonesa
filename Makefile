@@ -21,11 +21,14 @@ _header:
 	@echo MkDocs
 	@echo ------
 
-init:
-	@docker run --rm -v "`pwd`:/app" -w /app minidocks/mkdocs new .
+_docker:
+	@docker build . -t mkdocs
 
-build:
-	@docker run --rm -v "`pwd`:/app" -w /app minidocks/mkdocs build
+init: _docker
+	@docker run --rm -v "`pwd`:/app" -w /app new .
 
-serve:
-	@docker run --rm -v "`pwd`:/app" -w /app -p ${PUERTO}:${PUERTO} minidocks/mkdocs serve -a 0.0.0.0:${PUERTO} -t ${TEMA}
+build: _docker
+	@docker run --rm -v "`pwd`:/app" -w /app mkdocs build
+
+serve: _docker
+	@docker run --rm -v "`pwd`:/app" -w /app -p ${PUERTO}:${PUERTO} mkdocs serve -a 0.0.0.0:${PUERTO} -t ${TEMA}
