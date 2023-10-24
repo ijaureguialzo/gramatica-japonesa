@@ -10,17 +10,23 @@ endif
 help: _header
 	${info }
 	@echo Opciones:
-	@echo ---------------------------------------------
+	@echo ----------------------------------------
 	@echo init
 	@echo build
-	@echo serve --\> http://localhost:${PUERTO}
-	@echo update / clean
-	@echo ---------------------------------------------
+	@echo start / stop
+	@echo logs / update / clean
+	@echo ----------------------------------------
 
 _header:
 	@echo ------
 	@echo MkDocs
 	@echo ------
+
+_urls: _header
+	${info }
+	@echo ----------------------------------------
+	@echo [MkDocs] http://localhost:${PUERTO}
+	@echo ----------------------------------------
 
 init: update
 	@docker compose run --rm mkdocs new .
@@ -28,8 +34,16 @@ init: update
 build:
 	@docker compose run --rm mkdocs build
 
-serve:
-	@docker compose run --rm --service-ports mkdocs serve -a 0.0.0.0:${PUERTO} -t ${TEMA}
+_start_command:
+	@docker compose up -d mkdocs
+
+start: _start_command _urls
+
+stop:
+	@docker compose stop
+
+logs:
+	@docker compose logs mkdocs
 
 update:
 	@docker compose build --pull --no-cache
