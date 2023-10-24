@@ -14,7 +14,7 @@ help: _header
 	@echo init
 	@echo build
 	@echo start / stop
-	@echo logs / update / clean
+	@echo logs / update / stats / clean
 	@echo ----------------------------------------
 
 _header:
@@ -47,6 +47,9 @@ logs:
 
 update:
 	@docker compose build --pull --no-cache
+
+stats:
+	@docker stats
 
 clean:
 	@docker compose down -v --remove-orphans
