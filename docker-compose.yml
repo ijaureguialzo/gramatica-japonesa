@@ -10,3 +10,4 @@ services:
     ports:
       - "${PUERTO}:${PUERTO}"
     command: mkdocs serve -a 0.0.0.0:${PUERTO} -t ${TEMA}
+    restart: unless-stopped
