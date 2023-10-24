@@ -3,12 +3,19 @@
     align-items: center;
     justify-content: end;
     flex-direction: column-reverse;
+    margin-top: -20%;
 }
 
 .furigana-plugin > .furigana-plugin-kanji {
     font-size: 100%;
+    margin-top: -30%;
 }
 
 .furigana-plugin > .furigana-plugin-furigana {
     font-size: 40%;
+}
+
+td {
+    line-height: 100% !important;
+    vertical-align: middle !important;
 }
