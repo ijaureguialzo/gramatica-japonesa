@@ -13,7 +13,7 @@ help: _header
 	@echo ----------------------------------------
 	@echo init
 	@echo build
-	@echo start / stop
+	@echo start / stop / restart
 	@echo logs / update / stats / clean
 	@echo ----------------------------------------
 
@@ -41,6 +41,8 @@ start: _start_command _urls
 
 stop:
 	@docker compose stop
+
+restart: stop start
 
 logs:
 	@docker compose logs mkdocs
