@@ -14,6 +14,7 @@ help: _header
 	@echo init
 	@echo build
 	@echo serve --\> http://localhost:${PUERTO}
+	@echo update / clean
 	@echo ---------------------------------------------
 
 _header:
@@ -21,14 +22,17 @@ _header:
 	@echo MkDocs
 	@echo ------
 
-_docker:
-	@docker build . -t mkdocs
+init: update
+	@docker compose run --rm mkdocs new .
 
-init: _docker
-	@docker run --rm -v "`pwd`:/app" -w /app new .
+build:
+	@docker compose run --rm mkdocs build
 
-build: _docker
-	@docker run --rm -v "`pwd`:/app" -w /app mkdocs build
+serve:
+	@docker compose run --rm --service-ports mkdocs serve -a 0.0.0.0:${PUERTO} -t ${TEMA}
 
-serve: _docker
-	@docker run --rm -v "`pwd`:/app" -w /app -p ${PUERTO}:${PUERTO} mkdocs serve -a 0.0.0.0:${PUERTO} -t ${TEMA}
+update:
+	@docker compose build --pull --no-cache
+
+clean:
+	@docker compose down -v --remove-orphans
