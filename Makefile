@@ -40,7 +40,7 @@ _start_command:
 start: _start_command _urls
 
 stop:
-	@docker compose stop
+	@docker compose rm -fs
 
 restart: stop start
 
