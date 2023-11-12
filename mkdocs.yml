@@ -8,3 +8,6 @@ plugins:
 
 extra_css:
   - furigana.css
+
+markdown_extensions:
+  - attr_list:
