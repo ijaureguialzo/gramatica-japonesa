@@ -3,6 +3,7 @@
     align-items: center;
     justify-content: end;
     flex-direction: column-reverse;
+    line-height: 140% !important;
 }
 
 .furigana-plugin > .furigana-plugin-kanji {
@@ -15,10 +16,9 @@
 }
 
 td, th {
-    line-height: 100% !important;
+    line-height: 140% !important;
     vertical-align: middle !important;
 }
 
 td .furigana-plugin, th .furigana-plugin {
-    margin-top: -20%;
 }
